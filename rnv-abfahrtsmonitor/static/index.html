@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#193b4c">
+    <meta name="description" content="Abfahrtsmonitor für Mannheim Hauptbahnhof.">
+
+    <title>Abfahrten · Mannheim Hauptbahnhof</title>
+
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+
+<body>
+    <main class="page">
+        <header class="page-header">
+            <div class="brand">
+                <span class="brand-icon" aria-hidden="true">↗</span>
+                <span>Abfahrtsmonitor</span>
+            </div>
+
+            <div class="clock-block">
+                <time id="clock" class="clock">--:--</time>
+                <span id="date" class="date"></span>
+            </div>
+        </header>
+
+        <section class="station-header" aria-labelledby="station-name">
+            <p class="eyebrow">Mannheim · Haltestelle 2417</p>
+            <h1 id="station-name">Mannheim Hauptbahnhof</h1>
+            <p class="intro">
+                Deine nächsten Verbindungen auf einen Blick.
+            </p>
+        </section>
+
+        <section
+            id="monitor"
+            class="monitor"
+            data-state="loading"
+            aria-busy="true"
+            aria-labelledby="departures-heading"
+        >
+            <div class="monitor-toolbar">
+                <div>
+                    <h2 id="departures-heading">Nächste Abfahrten</h2>
+
+                    <span
+                        id="connection-status"
+                        class="connection-status"
+                    >
+                        Verbinde …
+                    </span>
+                </div>
+
+                <button id="refresh-button" type="button">
+                    <span aria-hidden="true">↻</span>
+                    Aktualisieren
+                </button>
+            </div>
+
+            <div
+                id="message"
+                class="message"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+            >
+                <span class="message-icon" aria-hidden="true"></span>
+
+                <h3 id="message-title">
+                    Abfahrten werden geladen
+                </h3>
+
+                <p id="message-text">
+                    Die aktuellen Verbindungen werden abgerufen.
+                </p>
+            </div>
+
+            <table id="departures-table" hidden>
+                <caption class="sr-only">
+                    Nächste Abfahrten an dieser Haltestelle
+                </caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Linie</th>
+                        <th scope="col">Richtung</th>
+                        <th scope="col" class="time-column">Abfahrt</th>
+                    </tr>
+                </thead>
+
+                <tbody id="departures-body"></tbody>
+            </table>
+
+            <div class="monitor-footer">
+                <span id="updated-at">Noch kein Datenstand</span>
+                <span>Aktualisierung alle 30 Sekunden</span>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <span>Daten: rnv · Praktikumsprojekt</span>
+            <span>Bis zu 10 nächste Abfahrten</span>
+        </footer>
+
+        <noscript>
+            <p class="noscript">
+                Bitte aktiviere JavaScript,
+                um die Abfahrten anzuzeigen.
+            </p>
+        </noscript>
+    </main>
+</body>
+</html>
